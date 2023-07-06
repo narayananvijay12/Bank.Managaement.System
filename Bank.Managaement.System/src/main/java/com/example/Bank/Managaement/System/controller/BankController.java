@@ -14,15 +14,23 @@ import org.springframework.web.bind.annotation.*;
 public class BankController {
     @Autowired
     BankService bankService;
+    int i=1;
+
 
     @PostMapping("/account_creation")
     public ResponseEntity<AxisBank> accountCreation(@RequestBody AxisBank axisBank){
+        if(i==1){
+            System.out.println("Inside the account creation");
+        }
         return new ResponseEntity<AxisBank>(bankService.accountCreation(axisBank), HttpStatus.CREATED);
+
     }
 //
     @PutMapping("/profile_update")
     public ResponseEntity<AxisBank> profileUpdate(@RequestBody AxisBank axisBank){
+         
         return new ResponseEntity<AxisBank>(bankService.profileUpdation(axisBank), HttpStatus.OK);
+
     }
 
     @PutMapping("/amount_depoist")
